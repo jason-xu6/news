@@ -1,66 +1,139 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>民大新闻</title>
-	<script src="jquery-2.2.3.js"></script>
+	<title>一日新闻网</title>
 	<link rel="stylesheet" href="style/style.css">
-	<link rel="stylesheet" href="style/slide.css">
-	<script src="script/slide.js"></script>
 	<script src="script/script.js"></script>
+	<script src="jquery-2.2.3.js"></script>
+	<script src="script/time.js"></script>
+	<script>
+	$(document).ready(function()
+	{
+		 $(function(){
+        var $div_li =$(".tab-ul ul li");
+        $div_li.mouseover(function(){
+            $(this).addClass("li-active")            //当前<li>元素高亮
+                   .siblings().removeClass("li-active");  //去掉其它同辈<li>元素的高亮
+            var index =  $div_li.index(this);  // 获取当前点击的<li>元素 在 全部li元素中的索引。
+            $(".ul-content")       //选取子节点。不选取子节点的话，会引起错误。如果里面还有div 
+                    .eq(index).addClass('ul-active')   //显示 <li>元素对应的<div>元素
+                    .siblings().removeClass('ul-active'); //隐藏其它几个同辈的<div>元素
+        });
+    });
+	});
+	</script>
 </head>
 <body>
-   <div class="wrap">
-   	   <div class="header">
-   	   	   <div class="header-top">
-   	   	   	    <div class="logo"><img src="image/logo.png" alt=""></div>
-   	   	   	    <div class="nowtime" id="show">
-   	   	   	    	当前时间
-   	   	   	    </div>
-   	   	   	    <div class="login">
-   	   	   	        <form action="">
-	   	   	   	    	<input type="button" value="登录" id="loging">
-	   	   	   	    	<input type="button" value="注册" id="register">
-	   	   	   	    	<input type="text" id="txt" placeholder="请输入关键字">
-	   	   	   	    	<input type="button" id="search">
-   	   	   	        </form>
-   	   	   	    </div>
-   	   	   </div>
-   	   	   <div class="header-nav">
-   	   	   	   <ul>
-   	   	   	   	<li><a href="">新闻</a></li>
-   	   	   	   	<li><a href="">体育</a></li>
-   	   	   	   	<li><a href="">博客</a></li>
-   	   	   	   	<li><a href="">时尚</a></li>
-   	   	   	   	<li><a href="">科技</a></li>
-   	   	   	   </ul>
-   	   	   </div>
-   	   </div>
-   	   <div class="content">
-   	   		<div class="content-slide">
-   	   			<div id="main_slide">
-   	   			<div id="thisisshuzi"></div>
-   	   			<div id="btn_left_slide" class="btn_slide"><</div>
-   	   			<div id="btn_right_slide" class="btn_slide">></div>
-   	   				<div id="list_slide">
-   	   					<div class="img_slide"><img src="image/1.jpg"></div>
-   	   					<div class="img_slide"><img src="image/2.jpg"></div>
-   	   					<div class="img_slide"><img src="image/3.jpg"></div>
-   	   					<div class="img_slide"><img src="image/4.jpg"></div>
-   	   					<div class="img_slide"><img src="image/5.jpg"></div>
-   	   				</div>
-   	   				<div id="ctrl_slide">
-   	   					<span class="span_slide">1</span>
-   	   					<span class="span_slide">2</span>
-   	   					<span class="span_slide">3</span>
-   	   					<span class="span_slide">4</span>
-   	   					<span class="span_slide">5</span>
-   	   				</div>
-   	   			</div>
-   	   		</div>
-   	   </div>
-   	   <div class="footer"></div>
-   </div>
+	<div class="container">
+		<div class="header">
+			<div class="mini-nav">
+				<ul>
+					<li><a href="">新闻首页</a></li>
+					<li><a href="">新闻</a></li>
+					<li><a href="">财经</a></li>
+					<li><a href="">体育</a></li>
+					<li><a href="">娱乐</a></li>
+					<li><a href="">科技</a></li>
+					<li><a href="">帮助</a></li>
+					<li id="mini">更多
+					    <ul>
+					    	<li><a href="">图片</a></li><li><a href="">社会</a></li>
+					    	<li><a href="">文化</a></li>
+					    </ul>
+					</li>
+					<span><a href="">登录</a></span>
+				    <span><a href="">注册</a></span>
+				</ul>
+			</div>
+			<div class="logo" style="width:100%;height:60%;">
+				<div class="logo-image">
+					<img src="image/logo.png" alt="">
+				</div>
+				<div class="logo-search">
+					<form action="">
+						<input type="text" title="请输入关键字" placeholder="请输入关键字">
+						<span title="搜索"><a href=""></a></span>
+
+					</form>
+				</div>
+			</div>
+			<div class="max-nav">
+				<ul>
+					<li><a href="">栏目新闻</a></li><li><a href="">最新新闻</a></li><li><a href="">热门新闻</a></li><li><a href="">新闻详情</a></li><li><a href="">视频</a></li><li><a href="">图片</a></li><li><a href="">社会</a></li><li><a href="">文化</a></li><li><a href="">更多</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content">
+			<div class="time-tian">
+				<div id="tianqi">
+					<iframe allowtransparency="true" frameborder="0" width="410" height="64" scrolling="no" src="http://tianqi.2345.com/plugin/widget/index.htm?s=2& z=3&t=1&v=2&d=2&bd=0&k=&f=&q=0&e=1&a=1&c=54511&w=410&h=64&align=center"></iframe>
+				</div>
+				<div class="time">
+					<div id="time1"></div>
+				  <div id="time2"></div>
+				</div>
+			</div>
+			<div class="content-left">
+				<div class="content-left-top">
+					<h1>(新闻头条)</h1>
+					<div class="tupian-left">
+						<div class="img"><img src="image/1.jpg" alt=""></div>
+						<div class="img"><img src="image/2.jpg" alt=""></div>
+					</div>
+					<div class="wenzi-right">
+						<div class="wenzi-right-top">
+							<p>主要新闻</p>
+							<ul>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+							</ul>
+						</div>
+						<div class="wenzi-right-buttom">
+							<p>主要新闻</p>
+							<ul>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+								<li><a href="">这里就是一些新闻，一些新闻。</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			    <div class="content-left-bottom">
+			  	<div class="tab-ul">
+			  		<ul>
+			  			<li class="li-active">要闻</li><li>财经</li><li>体育</li><li>娱乐</li><li>科技</li>
+			  		</ul>
+			  	</div>
+			  	<div class="ul-content ul-active">11111</div>
+			  	<div class="ul-content">2222222222</div>
+			  	<div class="ul-content">3333333333</div>
+			  	<div class="ul-content">44444444444</div>
+			  	<div class="ul-content">555555555</div>
+			  </div>
+			</div>
+			<div class="content-right">
+				<div class="content-right-top">
+					<p>今日热点</p>
+					<div class="slide"><img src="image/1.jpg" alt=""></div>
+					<div class="huati">
+						<span>热点话题</span>
+						<span>热点话题</span>
+					</div>
+				</div>
+				<div class="content-right-bottom">
+					<p>百科全书</p>
+					<div class="slide"><img src="image/1.jpg" alt=""></div>
+					<div class="huati">
+						<span>百科内容</span>
+						<span>百科内容</span>
+					</div>
+				</div>
+			</div>
+      
+		</div>
+		<div class="footer"></div>
+	</div>
 </body>
 </html>
