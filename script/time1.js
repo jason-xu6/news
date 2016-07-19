@@ -31,7 +31,7 @@ window.onload=function()
                     h=time(h);
 				    m=time(m);
 				    s=time(s);
-				    var show="当前时间:"+year+"年"+month+"月"+date+"日"+" "+h+":"+m+":"+s+" "+xinqi[d];
+				    var show=year+"年"+month+"月"+date+"日"+" "+h+":"+m+":"+s+" "+xinqi[d];
 	                document.getElementById("time1").innerHTML=show;
 
                 }

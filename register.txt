@@ -1,0 +1,1 @@
+a:5:{i:0;a:2:{s:8:"username";s:12:"201321092090";s:8:"password";s:10:"xsj3870145";}i:1;a:2:{s:8:"username";s:9:"111111111";s:8:"password";s:5:"11111";}i:2;a:2:{s:8:"username";s:0:"";s:8:"password";s:0:"";}i:3;a:2:{s:8:"username";s:6:"asdasd";s:8:"password";s:6:"asdasd";}i:4;a:2:{s:8:"username";s:6:"qweqwe";s:8:"password";s:6:"qweqwe";}}

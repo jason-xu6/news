@@ -27,7 +27,7 @@ $(function(){
 					}
 			}	
 		});
-	$("#submit").click(function(){
+	$("#submit2").click(function(){
 		$(".requir").trigger("blur");
 		var numError = $(".msg").length;
 		if(numError){

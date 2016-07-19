@@ -504,9 +504,9 @@ a{
 .login_logol{padding-left:20px; float:left;font-size:30px;color:#FFF; font-family:"Times New Roman", Times, serif;}
 .btn_back{width:45px;height:49px;float:right;background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login2.png) no-repeat;cursor:pointer;}
 .btn_back:hover{background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login3.png) no-repeat;cursor:pointer;}
-#submit{height:40px;width:120px;background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login.png) repeat-x;cursor:pointer;}
+#submit1{height:40px;width:120px;background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login.png) repeat-x;cursor:pointer;}
 #reset{height:40px;width:120px;background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login.png) repeat-x;margin-left:90px;cursor:pointer;}
-#submit:hover{background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login1.png) repeat-x;}
+#submit1:hover{background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login1.png) repeat-x;}
 #reset:hover{background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login1.png) repeat-x;}
 .login img{ 
    position: absolute;
@@ -528,9 +528,9 @@ a{
 .btn_back{width:45px;height:49px;float:right;background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login2.png) no-repeat;cursor:pointer;}
 .btn_back:hover{background:url(../%E6%B3%A8%E5%86%8C%E6%A1%86/login3.png) no-repeat;cursor:pointer;}
 form{margin-left:50px;}
-#submit{height:40px;width:120px;background:url(login.png) repeat-x;cursor:pointer;}
+#submit2{height:40px;width:120px;background:url(login.png) repeat-x;cursor:pointer;}
 #reset{height:40px;width:120px;background:url(login.png) repeat-x;margin-left:90px;cursor:pointer;}
-#submit:hover{background:url(login1.png) repeat-x;}
+#submit2:hover{background:url(login1.png) repeat-x;}
 #reset:hover{background:url(login1.png) repeat-x;}
 .register-wrap{
 	width:1200px;
