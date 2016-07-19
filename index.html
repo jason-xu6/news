@@ -2,29 +2,185 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>一日新闻网</title>
 	<link rel="stylesheet" href="style/style.css">
 	<script src="script/script.js"></script>
 	<script src="jquery-2.2.3.js"></script>
 	<script src="script/time.js"></script>
+	<script src="script/register.js"></script>
 	<script>
 	$(document).ready(function()
 	{
 		 $(function(){
         var $div_li =$(".tab-ul ul li");
         $div_li.mouseover(function(){
-            $(this).addClass("li-active")            //当前<li>元素高亮
-                   .siblings().removeClass("li-active");  //去掉其它同辈<li>元素的高亮
-            var index =  $div_li.index(this);  // 获取当前点击的<li>元素 在 全部li元素中的索引。
-            $(".ul-content")       //选取子节点。不选取子节点的话，会引起错误。如果里面还有div 
-                    .eq(index).addClass('ul-active')   //显示 <li>元素对应的<div>元素
-                    .siblings().removeClass('ul-active'); //隐藏其它几个同辈的<div>元素
+            $(this).addClass("li-active") 
+                   .siblings().removeClass("li-active");
+            var index =  $div_li.index(this); 
+            $(".ul-content")  
+                    .eq(index).addClass('ul-active') 
+                    .siblings().removeClass('ul-active');
         });
     });
 	});
+	$(document).ready(function()
+	{
+		$("#span-login a").click(function()
+			{
+				$(".login-wrap").css('display', 'block');
+				$(".container").css('opacity', '.6');
+				return false;
+			});
+		$(".X-close").click(function()
+			{
+				$(".login-wrap").css('display', 'none');
+				$(".container").css('opacity', '1');
+				return false;
+			});
+
+	});
+	$(document).ready(function()
+	{
+		$("#span-register a").click(function()
+			{
+				$(".register-wrap").css('display', 'block');
+				$(".container").css('opacity', '.6');
+				return false;
+			});
+		$(".X-close").click(function()
+			{
+				$(".register-wrap").css('display', 'none');
+				$(".container").css('opacity', '1');
+				return false;
+			});
+
+	});
+	$(document).ready(function(){
+			var i=0;
+			var clone=$(".img_slide").first().clone();
+			$("#list_slide").append(clone);
+			var size=$(".img_slide").size();
+			$(".span_slide").first().addClass('active');
+
+			//下面那个小圆圈点击
+			$(".span_slide").click(function(){
+				var index=$(this).index();
+				i=index;
+				$("#list_slide").stop().animate({left:-index*365},365);
+				$(this).addClass('active').siblings().removeClass('active');
+
+			$("#thisisshuzi").text(index+1+"/5");
+			});
+			$("#thisisshuzi").text(i+1+"/5");
+
+             //自动轮播
+             var timer=setInterval(function(){
+             	i++;
+             	move();
+             }, 2000);
+              //鼠标移入停止
+             $("#main_slide").mouseover(function(){
+             	clearInterval(timer);
+             });
+             //鼠标移出开始
+              $("#main_slide").mouseout(function(){
+              	timer=setInterval(function(){
+              		 i++;
+              		 move();
+              	}, 2000);
+              });
+			//左边点击
+		$("#btn_left_slide").click(function(){
+			        i--;
+				move();
+			});
+		    //右边点击
+		$("#btn_right_slide").click(function(){
+			      i++;
+			    move();
+			});
+
+		//移动函数
+		function move(){
+			var size=$(".img_slide").size();
+			var b=0;
+                 if (i<1) {
+                 	b=5;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }else if (i==5) {
+                 	b=0;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }else if (i==6) {
+                 	b=1;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }
+                 else{
+                 	if (i==size-1) {
+                 		b=2;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 	}
+                 	b=i;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }
+				if (i<0) {
+					$("#list_slide").css({left:-(size-1)*365+"px"});
+					i=size-2;
+				}
+             	if (i>size-1) {
+             		$("#list_slide").css({left: 0});
+             		i=1;
+             	}
+             	$("#list_slide").stop().animate({left:-i*365},500);
+             		if (i==size-1) {
+             		
+             	$(".span_slide").eq(0).addClass('active').siblings().removeClass('active');
+             	}else{
+             	$(".span_slide").eq(i).addClass('active').siblings().removeClass('active');}
+		}
+
+		});
 	</script>
 </head>
 <body>
+       <div class="login-wrap">
+	    	<div class="login">
+	    	   <img class="X-close" src="image/X.png" alt="关闭">
+		    	<div class="head">
+		        	<span class="login_logol">Login</span>
+		        	<div class="btn_back"></div>
+		        </div>
+		    	<form action="/" method="get">
+		        <br/><br/>
+		        <label for="username"> 账户：</label>
+		        <input type="text" name="username"><br/><br/>
+		        <label for="password"> 密码：</label>
+		        <input type="password" name="password"><br/><br/>
+		    	<input type="submit" value="登录" id="submit">
+		        <input type="reset" value="重置" id="reset">   
+		        </form>
+	        </div>
+	    </div>
+	    <div class="register-wrap">
+	    	<div class="register">
+	    	    <img class="X-close" src="image/X.png" alt="">
+	    		<div class="head">
+	    	    <span class="login_logol">Register</span>
+	    	    	<div class="btn_back"></div>
+	    	    </div>
+	    		<form action="/" method="post">
+	    	    <br/><br/>
+	    	   		<label for="username"> 账户：</label>&nbsp;&nbsp;
+	    	   		<input type="text" name="username" id="username" class="requir"><br/><br/>
+	    	   	 	<label for="password"> 密码：</label>&nbsp;&nbsp;
+	    	    	<input type="password" name="password" id="password" class="requir"><br/><br/>
+	    	 		<label for="resure"> 确认密码：</label>
+	    	 		<input type="password" name="password" id="resure"><br/><br/>
+	    	    	<input type="submit" value="注册" id="submit">
+	    	        <input type="reset" value="重置" id="reset">
+	    	    </form>
+	    	</div>
+	    </div>
 	<div class="container">
 		<div class="header">
 			<div class="mini-nav">
@@ -42,8 +198,8 @@
 					    	<li><a href="">文化</a></li>
 					    </ul>
 					</li>
-					<span><a href="">登录</a></span>
-				    <span><a href="">注册</a></span>
+					<span id="span-login"><a href="">登录</a></span>
+				    <span  id="span-register"><a href="">注册</a></span>
 				</ul>
 			</div>
 			<div class="logo" style="width:100%;height:60%;">
@@ -60,7 +216,13 @@
 			</div>
 			<div class="max-nav">
 				<ul>
-					<li><a href="">栏目新闻</a></li><li><a href="">最新新闻</a></li><li><a href="">热门新闻</a></li><li><a href="">新闻详情</a></li><li><a href="">视频</a></li><li><a href="">图片</a></li><li><a href="">社会</a></li><li><a href="">文化</a></li><li><a href="">更多</a></li>
+					<li><a href="">主页</a></li><li><a href="">最新新闻</a></li><li><a href="">热门新闻</a></li><li><a href="">栏目新闻</a></li><li><a href="">视频</a></li><li><a href="">图片</a></li><li><a href="">社会</a></li><li><a href="">文化</a></li><li id="genduo"><a href="">更多</a>
+                   <ul>
+                   	<li><a href="">宗教</a></li>
+                   	<li><a href="">名族</a></li>
+                   	<li><a href="">台湾</a></li>
+                   </ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -106,17 +268,97 @@
 			  			<li class="li-active">要闻</li><li>财经</li><li>体育</li><li>娱乐</li><li>科技</li>
 			  		</ul>
 			  	</div>
-			  	<div class="ul-content ul-active">11111</div>
-			  	<div class="ul-content">2222222222</div>
-			  	<div class="ul-content">3333333333</div>
-			  	<div class="ul-content">44444444444</div>
-			  	<div class="ul-content">555555555</div>
+			  	<div class="ul-content ul-active">
+			  		<div class="ul-content-image">
+			  			<a href="">
+            	  	        <img src="image/3.jpg" alt="要闻">
+            	  	        <div class="caption">这里是一些标题</div>
+            	  	    </a>
+            	  			
+				  		<a href="">
+				  		    <img src="image/1.jpg" alt="要闻">
+				  		    <div class="caption">这里是一些标题</div>
+				  		</a>
+			  		</div>
+			  	</div>
+			  	<div class="ul-content">
+				  	<div class="ul-content-image">
+				  		<a href="">
+            	  	        <img src="image/2.jpg" alt="要闻">
+            	  	        <div class="caption">这里是一些标题</div>
+            	  	    </a>
+            	  			
+				  		<a href="">
+				  		    <img src="image/3.jpg" alt="要闻">
+				  		    <div class="caption">这里是一些标题</div>
+				  		</a>
+			  		</div>
+			  	</div>
+			  	<div class="ul-content">
+            	  	<div class="ul-content-image">
+            	  	    <a href="">
+            	  	        <img src="image/5.jpg" alt="要闻">
+            	  	        <div class="caption">这里是一些标题</div>
+            	  	    </a>
+            	  			
+				  		<a href="">
+				  		    <img src="image/2.jpg" alt="要闻">
+				  		    <div class="caption">这里是一些标题</div>
+				  		</a>
+              		</div>
+			  	</div>
+			  	<div class="ul-content">
+			  	     <div class="ul-content-image">
+				  		<a href="">
+            	  	        <img src="image/3.jpg" alt="要闻">
+            	  	        <div class="caption">这里是一些标题</div>
+            	  	    </a>
+            	  			
+				  		<a href="">
+				  		    <img src="image/4.jpg" alt="要闻">
+				  		    <div class="caption">这里是一些标题</div>
+				  		</a>
+			  		</div>
+			  	</div>
+			  	<div class="ul-content">
+	  			  	<div class="ul-content-image">
+	  			  		<a href="">
+            	  	        <img src="image/2.jpg" alt="要闻">
+            	  	        <div class="caption">这里是一些标题</div>
+            	  	    </a>
+            	  			
+				  		<a href="">
+				  		    <img src="image/3.jpg" alt="要闻">
+				  		    <div class="caption">这里是一些标题</div>
+				  		</a>
+	  		  		</div>
+			  	</div>
 			  </div>
 			</div>
 			<div class="content-right">
 				<div class="content-right-top">
 					<p>今日热点</p>
-					<div class="slide"><img src="image/1.jpg" alt=""></div>
+					<div class="slide-wrap">
+						<div id="main_slide">
+						<div id="thisisshuzi"></div>
+						<div id="btn_left_slide" class="btn_slide"><</div>
+						<div id="btn_right_slide" class="btn_slide">></div>
+							<div id="list_slide">
+								<div class="img_slide"><img src="image/2.jpg"></div>
+								<div class="img_slide"><img src="image/2.jpg"></div>
+								<div class="img_slide"><img src="image/3.jpg"></div>
+								<div class="img_slide"><img src="image/4.jpg"></div>
+								<div class="img_slide"><img src="image/5.jpg"></div>
+							</div>
+							<div id="ctrl_slide">
+								<span class="span_slide">1</span>
+								<span class="span_slide">2</span>
+								<span class="span_slide">3</span>
+								<span class="span_slide">4</span>
+								<span class="span_slide">5</span>
+							</div>
+						</div>
+					</div>
 					<div class="huati">
 						<span>热点话题</span>
 						<span>热点话题</span>
@@ -124,7 +366,13 @@
 				</div>
 				<div class="content-right-bottom">
 					<p>百科全书</p>
-					<div class="slide"><img src="image/1.jpg" alt=""></div>
+					<div id="top_images2">
+							<img src="image/5.jpg" title="This is img too">
+							<div id="top_images2_slide"></div>
+							<div id="top_images2_capation">This is capation<br>
+							some capation capation<br>	This is capation too;
+							</div>
+					</div>
 					<div class="huati">
 						<span>百科内容</span>
 						<span>百科内容</span>
@@ -133,7 +381,12 @@
 			</div>
       
 		</div>
-		<div class="footer"></div>
+		<div class="footer">
+			<p>24小时客户服务热线：4006900000 010-82623378 </p>
+			<p>违法和不良信息举报电话：010-62646869 举报邮箱：<a href="">xushoujie6@163.com</a></p>
+			<p><a href="">新闻中心意见反馈留言板</a></p>
+			<p>Copyright©1995-2016&nbspBY 一日新闻</p>
+		</div>
 	</div>
 </body>
 </html>
