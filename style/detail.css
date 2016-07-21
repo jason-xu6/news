@@ -102,14 +102,15 @@ a{
 
 /*新闻属性*/
 .arrt{
-	width: 60%;
+	width: 65%;
 	height: 100px;
 	float: left;
 	margin-top: 10px;
 }
 .arrt #time1{
-	display: inline-block;
-    width: 48%;
+	padding-left: 141px;
+    display: inline-block;
+    width: 37%;
     height: 100%;
     vertical-align: top;
     line-height: 100px;
@@ -121,6 +122,14 @@ a{
 	width: 40%;
 	height: 100%;
 	vertical-align: top;
+	position: relative;
+}
+#arrt-select{
+	position: absolute;
+	right:30px;
+	top:26px;
+	font-size:18px;
+	font-weight: 800;
 }
 .arrt #arrt-arrt a{
 	display: inline-block;

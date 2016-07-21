@@ -1,0 +1,208 @@
+*{
+	padding:0;
+	margin:0;
+	
+}
+.container{
+	width:90%;
+	height:1240px;
+	margin:0 auto;
+	position: relative;
+}
+.header{
+	width:100%;
+	height:144px;
+}
+.header .mini-nav{
+	width:100%;
+	line-height:15%;
+	font-family: "微软雅黑";
+	position: relative;
+}
+.mini-nav ul li{
+	display: inline-block;
+    width:66px;
+    text-align: center;
+    line-height: 30px;
+}
+.mini-nav ul li a:hover{
+	border-bottom:1px #333 solid;
+}
+.mini-nav ul a{
+	color:#000;
+	font-size: 13px;
+}
+.mini-nav ul span{
+	display: inline-block;
+	position: relative;
+	right: -388px;
+	margin-left: 30px;
+}
+.mini-nav ul span:hover{
+	opacity: .6;
+	filter: alpha(opacity=60%);
+}
+.mini-nav ul #mini{
+	position: relative;
+	cursor:pointer;
+	font-size:13px;
+}
+
+.mini-nav ul #mini ul{
+    position: absolute;
+	width:100%;
+	height:77px;
+	display: none;
+	top:20px
+}
+.mini-nav ul #mini:hover ul{
+	display: block;
+}
+.mini-nav ul #mini ul li{
+	height:20px;
+	line-height: 20px;
+}
+.mini-nav ul #mini ul li a
+
+
+.header .logo{
+	width:100%;
+	height:60%;
+}
+.logo .logo-image{
+	width:26%;
+	height:100%;
+	float:left;
+}
+.logo .logo-image img{
+	width:100%;
+	height: 100%;
+	margin-left: 6px;
+
+}
+
+
+.logo .logo-search{
+    width:30%;
+    height:50%;
+    float: right;
+    margin-right: 36px;
+    margin-top: 20px;
+    position: relative;
+}
+.logo .logo-search input{
+	outline: none;
+	border-radius: 5px 5px;
+	line-height: 36px;
+	width: 233px;
+	padding-right: 33px;
+	font-size: 18px;
+	text-indent:8px;
+} 
+.logo .logo-search span{
+	cursor:pointer;
+    position: absolute;
+    right: 55px;
+    top: 4px;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    background: url(../image/search.png) no-repeat;
+}
+.logo .logo-search span:hover{
+	opacity: 0.6;
+	filter:alpha(opacity=60%)
+}
+.header .max-nav{
+	height:25%;
+	width:100%;
+}
+.max-nav ul{
+	width:100.4%;
+	height:100%;
+	background-color:#323232;
+	border-bottom:8px solid #32b5e5;
+}
+.max-nav ul li{
+	height: 100%;
+	line-height: 36px;
+    display: inline-block;
+    width:11%;
+    background-color:#323232;
+    text-align:center;
+    position: relative;
+    transition:all 0.3s linear;
+}
+.max-nav #genduo{
+	width:145px;
+	z-index: 10001;
+}
+.max-nav ul li a{
+	color:#fff;
+	display: inline-block;
+	width:100%;
+	height:100%;
+}
+.max-nav ul li:hover{
+	background-color:#32b5e5;
+
+}
+.max-nav ul li:hover a{
+	color:#000;
+}
+.max-nav ul li ul{
+	background-color: #32b5e5;
+	width: 100%;
+	height: 38px;
+	display: none;
+	position: absolute;
+	top:35px;
+	z-index: 100000;
+	transition:all 0.3s linear;
+}
+.max-nav #genduo:hover ul{
+	display: block;
+}
+.max-nav ul li ul li{
+	width:100%;
+	line-height:40px;
+}
+.max-nav ul li ul li a{
+    color:#fff;
+}
+
+
+/*换肤*/
+.huanfu{
+	width:200px;
+	width: 200px;
+	height: 50px;
+	position: absolute;
+	left: 600px;
+	top: 3px;
+}
+.huanfu .lan{
+	width:20%;
+	display: inline-block;
+	height:80%;
+	border:1px solid #000;
+	background-color:#46b3ea;
+}
+.huanfu .lv{
+	width:20%;
+	display: inline-block;
+	height:80%;
+	border:1px solid #000;
+	background-color:#c789d3;
+}
+.huanfu .hong{
+	width:20%;
+	display: inline-block;
+	height:80%;
+	border:1px solid #000;
+	background-color:#a1a8b7;
+}
+.huanfu span{
+	cursor:pointer;
+
+}
