@@ -5,6 +5,7 @@
 }
 .container{
 	width:90%;
+	min-width: 1214px;
 	height:1000px;
 	margin:0 auto;
 	position: relative;
@@ -72,11 +73,11 @@ a{
 	width:100%;
 	height:100%;
 }
-.max-nav ul li:hover{
+.max-nav>ul>li:hover{
 	background-color:#32b5e5;
 
 }
-.max-nav ul li:hover a{
+.max-nav>ul>li:hover>a{
 	color:#000;
 }
 .max-nav ul li ul{
@@ -96,8 +97,14 @@ a{
 	width:100%;
 	line-height:40px;
 }
+.max-nav ul li ul li:hover{
+	background-color:#32b5e5;
+}
 .max-nav ul li ul li a{
     color:#fff;
+}
+.max-nav ul li ul li a:hover{
+	color:#000;
 }
 
 /*新闻属性*/

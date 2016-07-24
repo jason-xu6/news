@@ -13,17 +13,17 @@
 	$(document).ready(function()
 	{
 		 $(function(){
-        var $div_li =$(".tab-ul ul li");
-        $div_li.mouseover(function(){
+            var $div_li =$(".tab-ul ul li");
+            $div_li.mouseover(function(){
             $(this).addClass("li-active") 
                    .siblings().removeClass("li-active");
             var index =  $div_li.index(this); 
             $(".ul-content")  
                     .eq(index).addClass('ul-active') 
                     .siblings().removeClass('ul-active');
-        });
-    });
-	});
+             });});
+     });
+
 	$(document).ready(function()
 	{
 		$("#span-login a").click(function()
@@ -237,7 +237,7 @@
 			</div>
 			<div class="logo" style="width:100%;height:60%;">
 				<div class="logo-image">
-					<img src="image/logo.png" alt="">
+					<a href="index.html"><img src="image/logo.png" alt=""></a>
 				</div>
 				<div class="logo-search">
 					<form action="">
@@ -249,11 +249,11 @@
 			</div>
 			<div class="max-nav">
 				<ul>
-					<li><a href="detail.html">主页</a></li><li><a href="detail.html">最新新闻</a></li><li><a href="detail.html">热门新闻</a></li><li><a href="detail.html">栏目新闻</a></li><li><a href="detail.html">视频</a></li><li><a href="detail.html">图片</a></li><li><a href="detail.html">社会</a></li><li><a href="detail.html">文化</a></li><li id="genduo"><a href="detail.html">更多</a>
+					<li><a href="index.html">主页</a></li><li><a href="lanmu.html">栏目新闻</a></li><li><a href="index.html">热门新闻</a></li><li><a href="index.html">最新新闻</a></li><li><a href="http://www.youku.com/">视频</a></li><li><a href="http://image.baidu.com/">图片</a></li><li><a href="lanmu.html">社会</a></li><li><a href="lanmu.html">文化</a></li><li id="genduo"><a href="lanmu.html">更多</a>
                    <ul>
-                   	<li><a href="detail.html">宗教</a></li>
-                   	<li><a href="detail.html">名族</a></li>
-                   	<li><a href="detail.html">台湾</a></li>
+                   	<li><a href="lanmu.html">宗教</a></li>
+                   	<li><a href="lanmu.html">名族</a></li>
+                   	<li><a href="lanmu.html">台湾</a></li>
                    </ul>
 					</li>
 				</ul>

@@ -2,10 +2,96 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>一日新闻</title>
 	<link rel="stylesheet" href="style/lanmu.css">
+	<script src="jquery-2.2.3.js"></script>
+	<link rel="shortcut icon" href="image/title.ico"/>
+	<script src="script/time.js"></script>
 	<script>
-	
+	$(document).ready(function(){
+			var i=0;
+			var clone=$(".img_slide").first().clone();
+			$("#list_slide").append(clone);
+			var size=$(".img_slide").size();
+			$(".span_slide").first().addClass('active');
+
+			//下面那个小圆圈点击
+			$(".span_slide").click(function(){
+				var index=$(this).index();
+				i=index;
+				$("#list_slide").stop().animate({left:-index*500},500);
+				$(this).addClass('active').siblings().removeClass('active');
+
+			$("#thisisshuzi").text(index+1+"/5");
+			});
+			$("#thisisshuzi").text(i+1+"/5");
+
+             //自动轮播
+             var timer=setInterval(function(){
+             	i++;
+             	move();
+             }, 2000);
+              //鼠标移入停止
+             $("#main_slide").mouseover(function(){
+             	clearInterval(timer);
+             });
+             //鼠标移出开始
+              $("#main_slide").mouseout(function(){
+              	timer=setInterval(function(){
+              		 i++;
+              		 move();
+              	}, 2000);
+              });
+			//左边点击
+		$("#btn_left_slide").click(function(){
+			        i--;
+				move();
+			});
+		    //右边点击
+		$("#btn_right_slide").click(function(){
+			      i++;
+			    move();
+			});
+
+		//移动函数
+		function move(){
+			var size=$(".img_slide").size();
+			var b=0;
+                 if (i<1) {
+                 	b=5;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }else if (i==5) {
+                 	b=0;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }else if (i==6) {
+                 	b=1;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }
+                 else{
+                 	if (i==size-1) {
+                 		b=2;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 	}
+                 	b=i;
+			$("#thisisshuzi").text(b+1+"/5").css('color', '#fff');
+                 }
+				if (i<0) {
+					$("#list_slide").css({left:-(size-1)*500+"px"});
+					i=size-2;
+				}
+             	if (i>size-1) {
+             		$("#list_slide").css({left: 0});
+             		i=1;
+             	}
+             	$("#list_slide").stop().animate({left:-i*500},500);
+             		if (i==size-1) {
+             		
+             	$(".span_slide").eq(0).addClass('active').siblings().removeClass('active');
+             	}else{
+             	$(".span_slide").eq(i).addClass('active').siblings().removeClass('active');}
+		}
+
+		});
 	$(document).ready(function()
 	{
 		$("#span-login a").click(function()
@@ -38,7 +124,7 @@
 			});
 
 	});
-		$(document).ready(function()
+			$(document).ready(function()
 		{
 			$(".huanfu .lan").click(function()
 			{
@@ -68,59 +154,332 @@
 	</script>
 </head>
 <body>
-	<div class="container">
-		<div class="header">
-			<div class="mini-nav">
-			    <div class="huanfu">
-			    	<div class="lan"></div>
-			    	<div class="lv"></div>
-			    	<div class="hong"></div>
-			    	<span>还原</span>
-			    </div>
-				<ul>
-					<li><a href="detail.html">新闻首页</a></li>
-					<li><a href="detail.html">新闻</a></li>
-					<li><a href="detail.html">财经</a></li>
-					<li><a href="detail.html">体育</a></li>
-					<li><a href="detail.html">娱乐</a></li>
-					<li><a href="detail.html">科技</a></li>
-					<li><a href="detail.html">帮助</a></li>
-					<li id="mini">更多
-					    <ul>
-					    	<li><a href="detail.html">图片</a></li><li><a href="detail.html">社会</a></li>
-					    	<li><a href="detail.html">文化</a></li>
-					    </ul>
-					</li>
-					<span id="span-login"><a href="detail.html">登录</a></span>
-				    <span  id="span-register"><a href="detail.html">注册</a></span>
-				</ul>
-			</div>
-			<div class="logo" style="width:100%;height:60%;">
-				<div class="logo-image">
-					<img src="image/logo.png" alt="">
+	    <div class="login-wrap">
+	    	<div class="login">
+	    	   <img class="X-close" src="image/X.png" alt="关闭">
+		    	<div class="head">
+		        	<span class="login_logol">Login</span>
+		        	<div class="btn_back"></div>
+		        </div>
+		    	<form action= method="POST">
+		        <br/><br/>
+		        <label for="username"> 账户：</label>
+		        <input type="text" name="username"><br/><br/>
+		        <label for="password"> 密码：</label>
+		        <input type="password" name="password"><br/><br/>
+		    	<input type="submit" value="登录" id="submit1">
+		        <input type="reset" value="重置" id="reset">   
+		        </form>
+	        </div>
+	    </div>
+	    <div class="register-wrap">
+	    	<div class="register">
+	    	    <img class="X-close" src="image/X.png" alt="">
+	    		<div class="head">
+	    	    <span class="">Register</span>
+	    	    	<div class="btn_back"></div>
+	    	    </div>
+	    		<form action="register.php" method="post">
+	    	    <br/><br/>
+	    	   		<label for="username"> 账户：</label>&nbsp;&nbsp;
+	    	   		<input type="text" name="username" id="username" class="requir"><br/><br/>
+	    	   	 	<label for="password"> 密码：</label>&nbsp;&nbsp;
+	    	    	<input type="password" name="password" id="password" class="requir"><br/><br/>
+	    	 		<label for="resure"> 确认密码：</label>
+	    	 		<input type="password" name="password" id="resure"><br/><br/>
+	    	    	<input type="submit" value="注册" id="submit2">
+	    	        <input type="reset" value="重置" id="reset">
+	    	    </form>
+	    	</div>
+	    </div>
+	    <div class="container">
+	    	<div class="header">
+				<div class="mini-nav">
+				    <div class="huanfu">
+				    	<div class="lan"></div>
+				    	<div class="lv"></div>
+				    	<div class="hong"></div>
+				    	<span>还原</span>
+				    </div>
+					<ul>
+						<li><a href="detail.html">新闻首页</a></li>
+						<li><a href="detail.html">新闻</a></li>
+						<li><a href="detail.html">财经</a></li>
+						<li><a href="detail.html">体育</a></li>
+						<li><a href="detail.html">娱乐</a></li>
+						<li><a href="detail.html">科技</a></li>
+						<li><a href="detail.html">帮助</a></li>
+						<li id="mini">更多
+						    <ul>
+						    	<li><a href="detail.html">图片</a></li><li><a href="detail.html">社会</a></li>
+						    	<li><a href="detail.html">文化</a></li>
+						    </ul>
+						</li>
+						<span id="span-login"><a href="">登录</a></span>
+					    <span  id="span-register"><a href="">注册</a></span>
+					</ul>
 				</div>
-				<div class="logo-search">
-					<form action="">
-						<input type="text" title="请输入关键字" placeholder="请输入关键字">
-						<span title="搜索"><a href="detail.html"></a></span>
-
-					</form>
+				<div class="logo" style="width:100%;height:60%;">
+					<div class="logo-image">
+					<a href="index.html"><img src="image/logo.png" alt=""></a>
+					</div>
+					<div id="time1">
+						
+					</div>
+					<div class="logo-search">
+						<form action="">
+							<input type="text" title="请输入关键字" placeholder="请输入关键字">
+							<span title="搜索"><a href="detail.html"></a></span>
+						</form>
+				    </div>
 				</div>
-			</div>
-			<div class="max-nav">
-				<ul>
-					<li><a href="detail.html">主页</a></li><li><a href="detail.html">最新新闻</a></li><li><a href="detail.html">热门新闻</a></li><li><a href="detail.html">栏目新闻</a></li><li><a href="detail.html">视频</a></li><li><a href="detail.html">图片</a></li><li><a href="detail.html">社会</a></li><li><a href="detail.html">文化</a></li><li id="genduo"><a href="detail.html">更多</a>
+			    <div class="max-nav">
+					<ul>
+					<li><a href="index.html">主页</a></li><li><a href="detail.html">栏目新闻</a></li><li><a href="index.html">热门新闻</a></li><li><a href="index.html">最新新闻</a></li><li><a href="http://www.youku.com/">视频</a></li><li><a href="http://image.baidu.com/">图片</a></li><li><a href="index.html">社会</a></li><li><a href="index.html">文化</a></li><li id="genduo"><a href="index.html">更多</a>
                    <ul>
                    	<li><a href="detail.html">宗教</a></li>
                    	<li><a href="detail.html">名族</a></li>
                    	<li><a href="detail.html">台湾</a></li>
                    </ul>
 					</li>
-				</ul>
-			</div>
-		</div>
-		<div class="content"></div>
-		<div class="footer"></div>
-	</div>
+					</ul>
+			    </div>
+		    </div>
+		    <div class="content">
+		    	<div class="content-top">
+		    		<div class="slide-wrap">
+						<div id="main_slide">
+							<div id="thisisshuzi"></div>
+							<div id="btn_left_slide" class="btn_slide"><</div>
+							<div id="btn_right_slide" class="btn_slide">></div>
+						    <div id="list_slide">
+								<div class="img_slide"><img src="image/1.png"></div>
+								<div class="img_slide"><img src="image/2.png"></div>
+								<div class="img_slide"><img src="image/3.png"></div>
+								<div class="img_slide"><img src="image/4.png"></div>
+								<div class="img_slide"><img src="image/5.png"></div>
+							</div>
+							<div id="ctrl_slide">
+								<span class="span_slide">1</span>
+								<span class="span_slide">2</span>
+								<span class="span_slide">3</span>
+								<span class="span_slide">4</span>
+								<span class="span_slide">5</span>
+							</div>
+						</div>
+					</div>
+					<div class="news">
+						<p>今天新闻</p>
+						<ul>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+							<li><a href="">新闻标题</a></li>
+						</ul>
+					</div>
+					<div class="tuwen">
+						<div class="image">
+							<img src="image/1.png" alt="新闻">
+						</div>
+						<div class="caption1">
+							这里是some简介,
+							这里是some简介,
+							这里是some简介.
+						</div>
+						<div class="caption2">
+							
+						</div>
+					</div>
+		    	</div>
+		    	<div class="content-wrap">
+		    		<div class="content-nav">
+		    			<p>国内新闻</p>
+		    		</div>
+		    		<div class="content-wrap-left">
+		    				<h3>国内新闻每日排行榜</h3>
+		    				<ul>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    				</ul>
+		    		</div>
+
+		    		<div class="content-content">
+		    			  <div class="content-center">
+		    			  	<h3>内地新闻</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    			  <div class="content-center">
+		    			  	<h3>港澳台新闻</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    		</div><div class="content-right">
+		    			<h3>图片</h3>
+		    			<div class="image">
+		    			  <div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/2.png" alt="图片" title="图片">
+		    				<div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/4.png" alt="图片" title="图片">
+		    			</div>
+		    		</div>
+		    	</div>
+		    	<div class="content-wrap">
+		    		<div class="content-nav">
+		    			<p>国外新闻</p>
+		    		</div>
+		    		<div class="content-wrap-left">
+		    				<h3>国外新闻每日排行榜</h3>
+		    				<ul>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    							    				</ul>
+		    		</div>
+		    		<div class="content-content">
+		    			   <div class="content-center">
+		    			  	<h3>最新</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    			  <div class="content-center">
+		    			  	<h3>环球新闻</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    		</div>
+		    		<div class="content-right">
+		    			<h3>图片</h3>
+		    			<div class="image">
+		    			  <div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/2.png" alt="图片" title="图片">
+		    				<div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/4.png" alt="图片" title="图片">
+		    			</div>
+		    		</div>
+		    	</div>
+
+                <div class="content-wrap">
+		    		<div class="content-nav">
+		    			<p>体育</p>
+		    		</div>
+		    		<div class="content-wrap-left">
+		    				<h3>体育每日排行榜</h3>
+		    				<ul>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    					<li><a href="">这里是每日排行榜的一些新闻</a></li>
+		    				</ul>
+		    		</div>
+		    		<div class="content-content">
+		    			<div class="content-center">
+		    			  	<h3>篮球</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    			  <div class="content-center">
+		    			  	<h3>足球</h3>
+		    			  	<ul>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  		<li><a href="">这些是一些内地的新闻</a></li>
+		    			  	</ul>
+		    			  </div>
+		    		</div>
+		    		<div class="content-right">
+		    			<h3>图片</h3>
+		    			<div class="image">
+		    			  <div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/2.png" alt="图片" title="图片">
+		    				<div class="caption">
+		    			  	这里是一些标题
+		    			  </div>
+		    				<img src="image/4.png" alt="图片" title="图片">
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div>
+		    <div class="footer">
+				<p>24小时客户服务热线：4006900000 010-82623378 </p>
+				<p>违法和不良信息举报电话：010-62646869 举报邮箱：<a href="detail.html">xushoujie6@163.com</a></p>
+				<p><a href="detail.html">新闻中心意见反馈留言板</a></p>
+				<p>Copyright©1995-2016&nbspBY 一日新闻</p>
+		    </div>
+	    </div>
 </body>
 </html>

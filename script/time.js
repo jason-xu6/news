@@ -40,13 +40,14 @@ window.onload=function()
                 function date1()
                 {   
                 	var myDate=new Date();
-                	var youDate=new Date("2016/7/31,00:00:00");
+                	var youDate=new Date("2016/7/31,17:30:00");
                 	var rightDate=youDate.getTime()-myDate.getTime();
                 	//1天=24小时  1小时=60分钟 1分钟=60秒 1秒=1000毫秒;
                 	var day=parseInt(rightDate/(24*60*60*1000));
                 	var h=parseInt(rightDate/(60*60*1000)%24);
                 	var m=parseInt(rightDate/(60*1000)%60);
                 	var s=parseInt(rightDate/(1000)%60);
+                    day=time(day);
                 	h=time(h);
 				    m=time(m);
 				    s=time(s);
