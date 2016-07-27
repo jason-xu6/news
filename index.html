@@ -167,6 +167,15 @@
 				$(".container").removeClass('container-hong');
 			});
 		});
+
+	$(document).ready(function()
+		{
+			$("#search").click(function() {
+				var val=$("#txt").val();
+				var address='https://www.baidu.com/s?wd='+val+"&rsv_spt=1&rsv_iqid=0xd73fed0700120d0a&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=9&rsv_sug1=7&rsv_sug7=100";
+                $("#search a").attr('href', address);
+			});
+		});
 	</script>
 </head>
 <body>
@@ -240,11 +249,10 @@
 					<a href="index.html"><img src="image/logo.png" alt=""></a>
 				</div>
 				<div class="logo-search">
-					<form action="">
-						<input type="text" title="请输入关键字" placeholder="请输入关键字">
-						<span title="搜索"><a href="detail.html"></a></span>
-
-					</form>
+					
+						<input id="txt" type="text" title="请输入关键字" placeholder="请输入关键字">
+						<span title="搜索" id="search"><a href="javascript:void()"></a></span>
+					
 				</div>
 			</div>
 			<div class="max-nav">

@@ -54,7 +54,7 @@ window.onload=function()
                 	if (rightDate<=0) {
                 		document.getElementById("time2").innerHTML="it's time";
                 	}else {
-                		document.getElementById("time2").innerHTML="民大实习结束："+day+"天"+h+"小时"+m+"分钟"+s+"秒";
+                		document.getElementById("time2").innerHTML="实习结束："+day+"天"+h+"小时"+m+"分钟"+s+"秒";
                 	}
                 	
                 }
